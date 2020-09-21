@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public final class ValidationResponse {
-    private HashMap<String, List<String>> validationErrors;
+    private final HashMap<String, List<String>> validationErrors;
 
     public ValidationResponse(HashMap<String, List<String>> validationErrors) {
         this.validationErrors = validationErrors;

@@ -3,7 +3,7 @@ package tv.codely.shared.domain;
 import java.util.Objects;
 
 public abstract class IntValueObject {
-    private Integer value;
+    private final Integer value;
 
     public IntValueObject(Integer value) {
         this.value = value;

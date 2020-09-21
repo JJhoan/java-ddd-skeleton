@@ -10,8 +10,8 @@ import java.util.List;
 
 public final class InMemoryCacheBackofficeCourseRepository implements BackofficeCourseRepository {
     private final BackofficeCourseRepository              repository;
+    private final HashMap<String, List<BackofficeCourse>> matchingCourses = new HashMap<>();
     private       List<BackofficeCourse>                  courses         = new ArrayList<>();
-    private       HashMap<String, List<BackofficeCourse>> matchingCourses = new HashMap<>();
 
     public InMemoryCacheBackofficeCourseRepository(BackofficeCourseRepository repository) {
         this.repository = repository;

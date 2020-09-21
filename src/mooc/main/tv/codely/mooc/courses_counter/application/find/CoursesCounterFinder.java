@@ -7,7 +7,7 @@ import tv.codely.shared.domain.Service;
 
 @Service
 public final class CoursesCounterFinder {
-    private CoursesCounterRepository repository;
+    private final CoursesCounterRepository repository;
 
     public CoursesCounterFinder(CoursesCounterRepository repository) {
         this.repository = repository;

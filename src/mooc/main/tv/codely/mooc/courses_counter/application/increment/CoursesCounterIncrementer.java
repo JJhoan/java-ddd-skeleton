@@ -8,8 +8,8 @@ import tv.codely.shared.domain.UuidGenerator;
 
 @Service
 public final class CoursesCounterIncrementer {
-    private CoursesCounterRepository repository;
-    private UuidGenerator            uuidGenerator;
+    private final CoursesCounterRepository repository;
+    private final UuidGenerator            uuidGenerator;
 
     public CoursesCounterIncrementer(CoursesCounterRepository repository, UuidGenerator uuidGenerator) {
         this.repository    = repository;

@@ -5,7 +5,7 @@ import tv.codely.shared.domain.bus.query.Response;
 import java.util.Objects;
 
 public final class CoursesCounterResponse implements Response {
-    private Integer total;
+    private final Integer total;
 
     public CoursesCounterResponse(Integer total) {
         this.total = total;

@@ -3,7 +3,7 @@ package tv.codely.analytics.domain_events.application.store;
 import tv.codely.analytics.domain_events.domain.*;
 
 public final class DomainEventStorer {
-    private DomainEventsRepository repository;
+    private final DomainEventsRepository repository;
 
     public DomainEventStorer(DomainEventsRepository repository) {
         this.repository = repository;

@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public final class InMemoryStudentRepository implements StudentRepository {
-    private UuidGenerator generator;
+    private final UuidGenerator generator;
 
     public InMemoryStudentRepository(UuidGenerator generator) {
         this.generator = generator;

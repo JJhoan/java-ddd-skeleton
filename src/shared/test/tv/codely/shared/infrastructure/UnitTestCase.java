@@ -4,7 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import tv.codely.shared.domain.UuidGenerator;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
-import tv.codely.shared.domain.bus.query.*;
+import tv.codely.shared.domain.bus.query.Query;
+import tv.codely.shared.domain.bus.query.QueryBus;
+import tv.codely.shared.domain.bus.query.Response;
 
 import java.util.Collections;
 import java.util.List;

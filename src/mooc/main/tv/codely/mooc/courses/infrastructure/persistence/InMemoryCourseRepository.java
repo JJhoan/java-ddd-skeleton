@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public final class InMemoryCourseRepository implements CourseRepository {
-    private HashMap<String, Course> courses = new HashMap<>();
+    private final HashMap<String, Course> courses = new HashMap<>();
 
     @Override
     public void save(Course course) {

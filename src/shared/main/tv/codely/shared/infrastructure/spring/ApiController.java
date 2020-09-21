@@ -20,6 +20,8 @@ public abstract class ApiController {
         this.commandBus = commandBus;
     }
 
+    abstract public HashMap<Class<? extends DomainError>, HttpStatus> errorMapping();
+
     protected void dispatch(Command command) throws CommandHandlerExecutionError {
         commandBus.dispatch(command);
     }
@@ -27,6 +29,4 @@ public abstract class ApiController {
     protected <R> R ask(Query query) throws QueryHandlerExecutionError {
         return queryBus.ask(query);
     }
-
-    abstract public HashMap<Class<? extends DomainError>, HttpStatus> errorMapping();
 }

@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Objects;
 
 public final class CoursesCounter {
-    private CoursesCounterId    id;
-    private CoursesCounterTotal total;
-    private List<CourseId>      existingCourses;
+    private final CoursesCounterId    id;
+    private       CoursesCounterTotal total;
+    private       List<CourseId>      existingCourses;
 
     public CoursesCounter(CoursesCounterId id, CoursesCounterTotal total, List<CourseId> existingCourses) {
         this.id              = id;

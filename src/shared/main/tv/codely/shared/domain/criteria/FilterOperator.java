@@ -7,7 +7,6 @@ public enum FilterOperator {
     LT("<"),
     CONTAINS("CONTAINS"),
     NOT_CONTAINS("NOT_CONTAINS");
-
     private final String operator;
 
     FilterOperator(String operator) {
