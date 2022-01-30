@@ -20,14 +20,12 @@ final class CourseCreatorShould extends CoursesModuleUnitTestCase {
     @BeforeEach
     protected void setUp() {
         super.setUp();
-
         creator = new CourseCreator(repository);
     }
 
     @Test
     void create_a_valid_course() {
         CreateCourseRequest request = CreateCourseRequestMother.random();
-
         Course course = CourseMother.fromRequest(request);
 
         creator.create(request);
