@@ -1,13 +1,14 @@
 package tv.codely.shared.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
-public abstract class Identifier {
-    private final UUID value;
+public abstract class Identifier implements Serializable {
+    private final String value;
 
     public Identifier(String value) {
-        this.value = UUID.fromString(value);
+        this.value = UUID.fromString(value).toString();
     }
 
     public String value() {

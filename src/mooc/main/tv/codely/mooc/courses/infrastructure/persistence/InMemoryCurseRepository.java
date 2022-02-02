@@ -1,14 +1,12 @@
 package tv.codely.mooc.courses.infrastructure.persistence;
 
-import tv.codely.mooc.courses.domain.Course;
-import tv.codely.mooc.courses.domain.CourseId;
-import tv.codely.mooc.courses.domain.CourseRepository;
-import tv.codely.shared.domain.Service;
-
 import java.util.HashMap;
 import java.util.Optional;
 
-@Service
+import tv.codely.mooc.courses.domain.Course;
+import tv.codely.mooc.courses.domain.CourseId;
+import tv.codely.mooc.courses.domain.CourseRepository;
+
 public final class InMemoryCurseRepository implements CourseRepository {
     private final HashMap<CourseId, Course> courses = new HashMap<>();
 
