@@ -1,5 +1,9 @@
 package tv.codely.apps.mooc.backend.controller;
 
+import java.util.Arrays;
+
+import javax.transaction.Transactional;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -8,6 +12,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
+import tv.codely.shared.domain.bus.event.DomainEvent;
+import tv.codely.shared.domain.bus.event.EventBus;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -18,9 +24,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public abstract class RequestTestCase {
+@Transactional
+public abstract class ApplicationTestCase {
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private EventBus eventBus;
 
     public void assertResponse(
         String endpoint,
@@ -37,7 +47,7 @@ public abstract class RequestTestCase {
             .andExpect(response);
     }
 
-    public void assertRequestWithBody(
+    protected void assertRequestWithBody(
         String method,
         String endpoint,
         String body,
@@ -48,4 +58,9 @@ public abstract class RequestTestCase {
             .andExpect(status().is(expectedStatusCode))
             .andExpect(content().string(""));
     }
+
+    protected void givenISendEventsToTheBus(DomainEvent<?> ...domainEvent) {
+        eventBus.publish(Arrays.asList(domainEvent));
+    }
+
 }

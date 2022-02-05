@@ -6,9 +6,6 @@ import tv.codely.mooc.students.StudentModuleUnitTestCase;
 import tv.codely.mooc.students.domain.Student;
 import tv.codely.mooc.students.domain.StudentMother;
 
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.verify;
-
 final class StudentCreatorShould extends StudentModuleUnitTestCase {
 
     private StudentCreator creator;
@@ -26,6 +23,6 @@ final class StudentCreatorShould extends StudentModuleUnitTestCase {
 
         creator.create(request);
 
-        verify(repository, atLeastOnce()).save(student);
+        shouldHaveSaved(student);
     }
 }

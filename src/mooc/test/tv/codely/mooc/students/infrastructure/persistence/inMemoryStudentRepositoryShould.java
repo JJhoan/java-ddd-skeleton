@@ -16,20 +16,20 @@ final class inMemoryStudentRepositoryShould extends StudentModuleInfrastructureT
     void save_a_student() {
         Student student = StudentMother.random();
 
-        repository.save(student);
+        inMemoryStudentRepository.save(student);
     }
 
     @Test
     void return_an_existing_student() {
         Student student = StudentMother.random();
 
-        repository.save(student);
+        inMemoryStudentRepository.save(student);
 
-        assertEquals(Optional.of(student), repository.search(student.id()));
+        assertEquals(Optional.of(student), inMemoryStudentRepository.search(student.id()));
     }
 
     @Test
     void not_return_a_non_existing_student() {
-        assertFalse(repository.search(StudentIdMother.random()).isPresent());
+        assertFalse(inMemoryStudentRepository.search(StudentIdMother.random()).isPresent());
     }
 }

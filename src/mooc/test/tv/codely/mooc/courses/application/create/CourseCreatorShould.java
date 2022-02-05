@@ -2,16 +2,11 @@ package tv.codely.mooc.courses.application.create;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tv.codely.mooc.courses.CoursesModuleInfrastructureTestCase;
 import tv.codely.mooc.courses.CoursesModuleUnitTestCase;
 import tv.codely.mooc.courses.domain.Course;
-import tv.codely.mooc.courses.domain.CourseDuration;
-import tv.codely.mooc.courses.domain.CourseId;
+import tv.codely.mooc.courses.domain.CourseCreatedDomainEvent;
+import tv.codely.mooc.courses.domain.CourseCreatedDomainEventMother;
 import tv.codely.mooc.courses.domain.CourseMother;
-import tv.codely.mooc.courses.domain.CourseName;
-import tv.codely.mooc.courses.domain.CourseRepository;
-
-import static org.mockito.Mockito.*;
 
 final class CourseCreatorShould extends CoursesModuleUnitTestCase {
 
@@ -20,7 +15,7 @@ final class CourseCreatorShould extends CoursesModuleUnitTestCase {
     @BeforeEach
     protected void setUp() {
         super.setUp();
-        creator = new CourseCreator(repository);
+        creator = new CourseCreator(repository, eventBus);
     }
 
     @Test
@@ -28,8 +23,11 @@ final class CourseCreatorShould extends CoursesModuleUnitTestCase {
         CreateCourseRequest request = CreateCourseRequestMother.random();
         Course course = CourseMother.fromRequest(request);
 
+        CourseCreatedDomainEvent domainEvent = CourseCreatedDomainEventMother.fromCourse(course);
+
         creator.create(request);
 
         shouldHaveSaved(course);
+        shouldHavePublished(domainEvent);
     }
 }

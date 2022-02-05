@@ -13,9 +13,13 @@ public final class StudentEmail extends StringValueObject {
         checkBody(value);
     }
 
+    private StudentEmail() {
+        super(null);
+    }
+
     private void checkBody(String value) {
         if(!EMAIL.matcher(value).matches()) {
-            throw new IllegalArgumentException("invalid email");
+            throw new IllegalArgumentException("invalid email " + value);
         }
     }
 }

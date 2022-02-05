@@ -9,7 +9,7 @@ import tv.codely.shared.domain.Service;
 
 @Service
 public class StudentCreator {
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
 
     public StudentCreator(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
@@ -19,7 +19,8 @@ public class StudentCreator {
         Student student = new Student(
             new StudentId(request.id()),
             new StudentName(request.name()),
-            new StudentEmail(request.email()));
+            new StudentEmail(request.email())
+        );
 
         studentRepository.save(student);
     }

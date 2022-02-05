@@ -8,4 +8,6 @@ public final class CourseId extends Identifier {
         super(value);
     }
 
+    public CourseId(){
+    }
 }

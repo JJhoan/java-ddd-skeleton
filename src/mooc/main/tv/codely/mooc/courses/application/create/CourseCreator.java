@@ -6,22 +6,26 @@ import tv.codely.mooc.courses.domain.CourseId;
 import tv.codely.mooc.courses.domain.CourseName;
 import tv.codely.mooc.courses.domain.CourseRepository;
 import tv.codely.shared.domain.Service;
+import tv.codely.shared.domain.bus.event.EventBus;
 
 @Service
 public final class CourseCreator {
     private final CourseRepository repository;
+    private final EventBus eventBus;
 
-    public CourseCreator(CourseRepository repository) {
+    public CourseCreator(CourseRepository repository, EventBus eventBus) {
         this.repository = repository;
+        this.eventBus = eventBus;
     }
 
     public void create(CreateCourseRequest request) {
-        Course course = new Course(
-            new CourseId(request.id()),
-            new CourseName(request.name()),
-            new CourseDuration(request.duration())
-        );
+        CourseId id = new CourseId(request.id());
+        CourseName name = new CourseName(request.name());
+        CourseDuration duration = new CourseDuration(request.duration());
 
-        this.repository.save(course);
+        Course course = Course.create(id, name, duration);
+
+        repository.save(course);
+        eventBus.publish(course.pullDomainEvents());
     }
 }

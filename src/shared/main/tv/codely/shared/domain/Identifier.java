@@ -15,6 +15,14 @@ public abstract class Identifier implements Serializable {
         return value.toString();
     }
 
+    public String getValue() {
+        return value;
+    }
+
+    protected Identifier(){
+        this.value = null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
