@@ -37,11 +37,11 @@ public abstract class DomainEvent<T extends DomainEvent<?>> {
         return occurredOn;
     }
 
-    protected abstract String eventName();
+    public abstract String eventName();
 
-    protected abstract Map<String, Serializable> toPrimitive();
+    public abstract Map<String, Serializable> toPrimitives();
 
-    protected abstract T fromPrimitives(
+    public abstract T fromPrimitives(
         String aggregateId,
         Map<String, Serializable> body,
         String eventId,

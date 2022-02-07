@@ -13,7 +13,7 @@ final class StudentCreatorShould extends StudentModuleUnitTestCase {
     @BeforeEach
     protected void setUp() {
         super.setUp();
-        creator = new StudentCreator(repository);
+        creator = new StudentCreator(repository, eventBus);
     }
 
     @Test
